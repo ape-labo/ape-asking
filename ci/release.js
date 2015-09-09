@@ -9,7 +9,7 @@
 process.chdir(__dirname + '/..');
 
 var apeTasking = require('ape-tasking'),
-    apeReleasing = require('../lib');
+    apeReleasing = require('ape-releasing');
 
 apeTasking.runTasks('release', [
     function releasePackage(callback) {
