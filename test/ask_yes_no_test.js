@@ -3,7 +3,7 @@
  * Runs with nodeunit.
  */
 
-var askYesNo = require('../lib/ask_yes_no.js'),
+const askYesNo = require('../lib/ask_yes_no.js'),
     yesno = require('yesno'),
     injectmock = require('injectmock');
 
@@ -17,29 +17,29 @@ exports.tearDown = function (done) {
 };
 
 exports['Handle yes'] = function (test) {
-    injectmock(yesno, 'ask', function (msg, defaults, callback) {
+    injectmock(yesno, 'ask', (msg, defaults, callback) => {
         callback(true);
     });
     askYesNo({
-        yes: function () {
+        yes: () => {
             test.ok(true);
             test.done();
         },
-        no: function () {
+        no: () => {
             test.ok(false);
         }
     });
 };
 
 exports['Handle no'] = function (test) {
-    injectmock(yesno, 'ask', function (msg, defaults, callback) {
+    injectmock(yesno, 'ask', (msg, defaults, callback) => {
         callback(false);
     });
     askYesNo({
-        yes: function () {
+        yes: () => {
             test.ok(false);
         },
-        no: function () {
+        no: () => {
             test.ok(true);
             test.done();
         }
