@@ -1,48 +1,40 @@
 /**
  * Test case for askYesNo.
- * Runs with nodeunit.
+ * Runs with mocha
  */
+'use strict'
 
-const askYesNo = require('../lib/ask_yes_no.js'),
-    yesno = require('yesno'),
-    injectmock = require('injectmock');
+const askYesNo = require('../lib/ask_yes_no.js')
+const yesno = require('yesno')
+const co = require('co')
+const assert = require('assert')
+const injectmock = require('injectmock')
 
-exports.setUp = function (done) {
-    injectmock.restoreAll();
-    done();
-};
+describe('askYesNo', () => {
+  before((done) => {
+    injectmock.restoreAll()
+    done()
+  })
 
-exports.tearDown = function (done) {
-    done();
-};
+  after((done) => {
+    done()
+  })
 
-exports['Handle yes'] = function (test) {
+  it('Handle yes', () => co(function * () {
     injectmock(yesno, 'ask', (msg, defaults, callback) => {
-        callback(true);
-    });
-    askYesNo({
-        yes: () => {
-            test.ok(true);
-            test.done();
-        },
-        no: () => {
-            test.ok(false);
-        }
-    });
-};
+      callback(true)
+    })
+    let yes = yield askYesNo()
+    assert.ok(yes)
+  }))
 
-exports['Handle no'] = function (test) {
+  it('Handle no', () => co(function * () {
     injectmock(yesno, 'ask', (msg, defaults, callback) => {
-        callback(false);
-    });
-    askYesNo({
-        yes: () => {
-            test.ok(false);
-        },
-        no: () => {
-            test.ok(true);
-            test.done();
-        }
-    });
-};
+      callback(false)
+    })
+    let yes = yield askYesNo()
+    assert.ok(!yes)
+  }))
+})
 
+/* global describe, it, before, after */

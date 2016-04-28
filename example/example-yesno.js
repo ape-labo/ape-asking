@@ -1,12 +1,9 @@
 #!/usr/bin/env node
+'use strict'
 
-var apeAsking = require('ape-asking');
+const apeAsking = require('ape-asking')
 
-apeAsking.askYesNo('Are you sure to do that? [y/N]',{
-    yes:function(){
-
-    },
-    no:function(){
-
-    }
-});
+apeAsking.askYesNo('Are you sure to do that? [y/N]')
+  .then((sure) => {
+    /* ... */
+  })
