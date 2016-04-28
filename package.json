@@ -1,6 +1,6 @@
 {
   "name": "ape-asking",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "ape framework module for asking.",
   "main": "lib",
   "scripts": {
