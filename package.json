@@ -1,13 +1,11 @@
 {
   "name": "ape-asking",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "ape framework module for asking.",
   "main": "lib",
   "scripts": {
     "build": "./ci/build.js",
-    "test": "./ci/test.js",
-    "cover": "./ci/cover.js",
-    "report": "./ci/report.js"
+    "test": "./ci/test.js"
   },
   "repository": "ape-repo/ape-asking",
   "keywords": [
